@@ -1,0 +1,221 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Diesel Auto Power — redesign concept design system.
+ * Navy / slate foundation with DAP royal-blue accent (from the live brand),
+ * amber for "illustrative" labels and red reserved for sale pricing. All colors are oklch tokens.
+ */
+
+@theme inline {
+  --font-display: "Barlow Condensed", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Barlow", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 6px);
+  --radius-2xl: calc(var(--radius) + 10px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ink: var(--ink);
+  --color-ink-foreground: var(--ink-foreground);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-border: var(--ink-border);
+  --color-steel: var(--steel);
+  --color-amber: var(--amber);
+  --color-success: var(--success);
+  --color-sale: var(--sale);
+  --color-primary-soft: var(--primary-soft);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.375rem;
+  --background: oklch(0.975 0.003 260);
+  --foreground: oklch(0.18 0.008 260);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.008 260);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.008 260);
+  --primary: oklch(0.5 0.2 262);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.93 0.005 260);
+  --secondary-foreground: oklch(0.2 0.008 260);
+  --muted: oklch(0.945 0.004 260);
+  --muted-foreground: oklch(0.47 0.012 260);
+  --accent: oklch(0.93 0.005 260);
+  --accent-foreground: oklch(0.2 0.008 260);
+  --destructive: oklch(0.55 0.22 27);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.88 0.006 260);
+  --input: oklch(0.86 0.006 260);
+  --ring: oklch(0.55 0.2 262);
+
+  /* Dark industrial surfaces (header, hero, footer) */
+  --ink: oklch(0.2 0.025 265);
+  --ink-foreground: oklch(0.97 0.002 260);
+  --ink-muted: oklch(0.74 0.02 262);
+  --ink-border: oklch(0.34 0.03 265);
+  --steel: oklch(0.31 0.03 265);
+  --amber: oklch(0.8 0.16 75);
+  --success: oklch(0.58 0.15 150);
+  --sale: oklch(0.57 0.21 27);
+  --primary-soft: oklch(0.94 0.03 262);
+
+  --gradient-hero: linear-gradient(90deg, oklch(0.16 0.03 265 / 0.96) 0%, oklch(0.16 0.03 265 / 0.78) 45%, oklch(0.16 0.03 265 / 0.1) 100%);
+  --gradient-fade-up: linear-gradient(0deg, oklch(0.16 0.03 265 / 0.92), transparent 70%);
+  --shadow-card: 0 1px 2px oklch(0 0 0 / 0.06), 0 8px 24px -12px oklch(0 0 0 / 0.18);
+  --shadow-lift: 0 2px 4px oklch(0 0 0 / 0.08), 0 20px 40px -18px oklch(0 0 0 / 0.35);
+
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.18 0.008 260);
+  --sidebar-primary: oklch(0.5 0.2 262);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.94 0.004 260);
+  --sidebar-accent-foreground: oklch(0.18 0.008 260);
+  --sidebar-border: oklch(0.88 0.006 260);
+  --sidebar-ring: oklch(0.55 0.2 262);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+}
+
+@utility font-display {
+  font-family: var(--font-display);
+}
+
+@utility eyebrow {
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.75rem;
+  color: var(--primary);
+}
+
+@utility btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0 1.25rem;
+  border-radius: var(--radius);
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.95rem;
+  transition: background-color 150ms, color 150ms, border-color 150ms, transform 150ms;
+  &:active { transform: translateY(1px); }
+  &:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+  &:disabled { opacity: 0.5; pointer-events: none; }
+}
+
+@utility btn-primary {
+  background: var(--primary);
+  color: var(--primary-foreground);
+  &:hover { background: color-mix(in oklab, var(--primary) 88%, black); }
+}
+
+@utility btn-ink {
+  background: var(--ink);
+  color: var(--ink-foreground);
+  &:hover { background: var(--steel); }
+}
+
+@utility btn-outline {
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--foreground);
+  &:hover { border-color: var(--foreground); }
+}
+
+@utility btn-ghost-ink {
+  border: 1px solid color-mix(in oklab, var(--ink-foreground) 35%, transparent);
+  color: var(--ink-foreground);
+  &:hover { background: color-mix(in oklab, var(--ink-foreground) 10%, transparent); border-color: var(--ink-foreground); }
+}
+
+@utility field {
+  width: 100%;
+  min-height: 2.75rem;
+  border: 1px solid var(--input);
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 0 0.875rem;
+  color: var(--foreground);
+  &:focus { outline: 2px solid var(--ring); outline-offset: -1px; }
+}
+
+@utility shadow-card {
+  box-shadow: var(--shadow-card);
+}
+@utility shadow-lift {
+  box-shadow: var(--shadow-lift);
+}
+@utility bg-hero-fade {
+  background-image: var(--gradient-hero);
+}
+@utility bg-fade-up {
+  background-image: var(--gradient-fade-up);
+}
+@utility bg-grid-ink {
+  background-image:
+    linear-gradient(color-mix(in oklab, var(--ink-foreground) 5%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklab, var(--ink-foreground) 5%, transparent) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@utility animate-rise {
+  animation: rise 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
